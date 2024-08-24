@@ -16,15 +16,25 @@
   <?php
   include('connection.php');
 
+  $sql = "SELECT customer_id,mobile_no from customer ORDER BY customer_id DESC LIMIT 1";
+  $result = mysqli_query($conn, $sql);
+
+
+  if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $id = $row['customer_id'];
+      // print_r($id);
+      // exit;
+    }
+  }
+
   if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $city = $_POST['city'];
     $gender = $_POST['radio'];
 
-
-
-    $sql = "insert into customer (customer_name,customer_email,customer_city,customer_gender)values ('$name','$email','$city','$gender')";
+    $sql = "UPDATE customer SET customer_name='$name',customer_email='$email',customer_city='$city',customer_gender='$gender' where customer_id=$id ";
     $result = mysqli_query($conn, $sql);
     if ($result) {
       header("location:order.php");

@@ -21,7 +21,7 @@
 <?php
 include 'connection.php';
 
-$sql = "SELECT city,adult,kids,infants,stays,order_date,wallet FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
+$sql = "SELECT city,adult,kids,infants,stays,tent,order_date,wallet FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
 $result = mysqli_query($conn, $sql);
 
 if ($row = mysqli_fetch_assoc($result)) {
@@ -50,6 +50,9 @@ if ($row = mysqli_fetch_assoc($result)) {
       </div>
       <div class="field border-bottom">
         <h4>STAY :- <?php echo $row['stays']; ?></h4>
+      </div>
+      <div class="field border-bottom">
+        <h4>TENT :- <?php echo $row['tent']; ?></h4>
       </div>
       <div class="field border-bottom">
         <h4>ORDER_DATE :- <?php echo $row['order_date']; ?></h4>

@@ -39,6 +39,8 @@
   include 'connection.php';
 
   if (isset($_POST['submit'])) {
+    // print_r($_POST['nstay']);
+    // exit;
     // Debugging output (remove these in production)
     $city = $_POST['allcity'];
     if ($city == 'bangalore') {
@@ -47,8 +49,10 @@
     $adult = $_POST['counterValue'];
     $kids = $_POST['counterValue1'];
     $infant = $_POST['counterValue2'];
+    $tent = $_POST['nstay'];
 
-    $sql = "insert into customer_order (city,adult,kids,infants,stays) values ('$city','$adult',' $kids','$infant','$stay')";
+
+    $sql = "insert into customer_order (city,adult,kids,infants,stays,tent) values ('$city','$adult',' $kids','$infant','$stay','$tent')";
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
@@ -160,12 +164,21 @@
         <div class="col-md-2">
           <div class="container">
             <div class="button-container">
-              <button type="button" class="button active" id="dayButton" onclick="change_day()">Day</button>
+              <button type="button" class="button active" id="dayButton" onclick="change_day();showtent_day()">Day</button>
               <span class="text" id="modeText">day</span>
               <input type="hidden" id="modeText1" name="modeText1" value="day">
-              <button type="button" class="button" id="nightButton" onclick="change_day()">Night</button>
+              <button type="button" class="button" id="nightButton" onclick="change_day(); showtent_night()">Night</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="row mb-4" id="tent4">
+        <div class="col-md-3"></div>
+        <div class="col-md-4 border border-dark">
+          <label for="">TENT AVAILABLE</label>
+          <input type="radio" name="nstay" id="nstay" value="tent" />
+          <!-- <input type="text" id="tents" name="tents"> -->
         </div>
       </div>
 
@@ -298,7 +311,7 @@
     function tooglep() {
       let p = document.getElementById("info3");
       if (p.style.display == "block") {
-        console.log(p.style.display);
+        // console.log(p.style.display);
         p.style.display = "block";
       } else {
         p.style.display = "block";
@@ -314,6 +327,31 @@
         p.style.display = "none";
       }
     }
+
+
+    // tent show 
+    let p = document.getElementById("tent4");
+    p.style.display = "none";
+
+    function showtent_day() {
+      let p = document.getElementById("tent4");
+      p.style.display = "none";
+      if (p.style.display == "none") {
+        p.style.display = "none";
+      } else {
+        p.style.display = "none";
+      }
+    }
+
+    function showtent_night() {
+      let p = document.getElementById("tent4");
+      if (p.style.display == "block") {
+        p.style.display = "block";
+      } else {
+        p.style.display = "block";
+      }
+    }
+
 
     // slect city
     function handleClick(city) {

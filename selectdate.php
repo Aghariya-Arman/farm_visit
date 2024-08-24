@@ -26,16 +26,18 @@
         <?php
         include 'connection.php';
 
-        $sql = "SELECT order_id,city,adult,kids,infants,stays FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
+        $sql = "SELECT order_id,city,adult,kids,infants,stays,tent FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
         if ($result) {
           while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['order_id'];
             echo '
+             <span><center>city:' . $row['city'] . '</center></span>
                 <span><center>adult:' . $row['adult'] . '</center></span>
                 <span><center>kids:' . $row['kids'] . '</center></span>
                   <span><center>infants:' . $row['infants'] . '</center></span>
                    <span><center>stays:' . $row['stays'] . '</center></span>
+                     <span><center>tent:' . $row['tent'] . '</center></span>
            
       ';
           }

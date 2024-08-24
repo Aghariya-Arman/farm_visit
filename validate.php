@@ -48,13 +48,13 @@ if (isset($_POST['submit'])) {
 
   $phno = $_POST['mobno'];
 
-  $sql = "select mobile_no from customer_otp where mobile_no='$phno'";
+  $sql = "select mobile_no from customer where mobile_no='$phno'";
   $result = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($result) > 0) {
     header("location:order.php");
   } else {
-    $sql = "insert into customer_otp (mobile_no) values ('$phno')";
+    $sql = "insert into customer (mobile_no) values ('$phno')";
     $result = mysqli_query($conn, $sql);
     header("location:register.php");
   }
