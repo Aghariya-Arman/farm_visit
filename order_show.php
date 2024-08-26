@@ -17,54 +17,55 @@
 
 <body>
 
-</body>
-<?php
-include 'connection.php';
 
-$sql = "SELECT city,adult,kids,infants,stays,tent,order_date,wallet FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
-$result = mysqli_query($conn, $sql);
+  <?php
+  include 'connection.php';
 
-if ($row = mysqli_fetch_assoc($result)) {
-}
+  $sql = "SELECT city,adult,kids,infants,stays,tent,order_date,wallet FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
+  $result = mysqli_query($conn, $sql);
 
-
-?>
+  if ($row = mysqli_fetch_assoc($result)) {
+  }
 
 
+  ?>
 
-<div class="container">
-  <div class="box justify-content-center row  mt-5">
-    <div class="col-lg-6 border border-dark p-3">
-      <h3 class="border-bottom  border-dark text-center"> YOUR ORDERD DETAIL</h3>
-      <div class="field border-bottom">
-        <h5>CITY :- <?php echo $row['city']; ?></h5>
-      </div>
-      <div class="field border-bottom ">
-        <h5>ADULT :- <?php echo $row['adult']; ?></h5>
-      </div>
-      <div class="field border-bottom">
-        <h5>KIDS :- <?php echo $row['kids']; ?></h5>
-      </div>
-      <div class="field border-bottom">
-        <h5>INFANTS :- <?php echo $row['infants']; ?></h5>
-      </div>
-      <div class="field border-bottom">
-        <h4>STAY :- <?php echo $row['stays']; ?></h4>
-      </div>
-      <div class="field border-bottom">
-        <h4>TENT :- <?php echo $row['tent']; ?></h4>
-      </div>
-      <div class="field border-bottom">
-        <h4>ORDER_DATE :- <?php echo $row['order_date']; ?></h4>
-      </div>
-      <div class="field border-bottom">
-        <h4>WALLET :- <?php echo $row['wallet']; ?></h4>
-      </div>
-      <div class="field text-center mt-3">
-        <button class="btn btn-primary"><a href="index.html" style="color: white;">Back To Home</a></button>
+
+
+  <div class="container">
+    <div class="box justify-content-center row  mt-5">
+      <div class="col-lg-6 border border-dark p-3">
+        <h3 class="border-bottom  border-dark text-center"> YOUR ORDERD DETAIL</h3>
+        <div class="field border-bottom">
+          <h5>CITY :- <?php echo $row['city']; ?></h5>
+        </div>
+        <div class="field border-bottom ">
+          <h5>ADULT :- <?php echo $row['adult']; ?></h5>
+        </div>
+        <div class="field border-bottom">
+          <h5>KIDS :- <?php echo $row['kids']; ?></h5>
+        </div>
+        <div class="field border-bottom">
+          <h5>INFANTS :- <?php echo $row['infants']; ?></h5>
+        </div>
+        <div class="field border-bottom">
+          <h4>STAY :- <?php echo $row['stays']; ?></h4>
+        </div>
+        <div class="field border-bottom">
+          <h4>TENT :- <?php echo $row['tent']; ?></h4>
+        </div>
+        <div class="field border-bottom">
+          <h4>ORDER_DATE :- <?php echo $row['order_date']; ?></h4>
+        </div>
+        <div class="field border-bottom">
+          <h4>WALLET :- <?php echo $row['wallet']; ?></h4>
+        </div>
+        <div class="field text-center mt-3">
+          <button class="btn btn-primary"><a href="index.html" style="color: white;">Back To Home</a></button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</body>
 
 </html>
