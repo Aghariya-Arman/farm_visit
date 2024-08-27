@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Show_order</title>
+  <title>customer details</title>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -28,12 +28,14 @@
     $sql = "select customer_name,customer_email,customer_city from customer where mobile_no='$phno'";
     $result = mysqli_query($conn, $sql);
 
-    if ($result) {
+    if (mysqli_num_rows($result) > 0) {
       while ($row = mysqli_fetch_assoc($result)) {
         $name = $row['customer_name'];
         $email = $row['customer_email'];
         $city = $row['customer_city'];
       }
+    } else {
+      header("location:register.php");
     }
   }
   ?>

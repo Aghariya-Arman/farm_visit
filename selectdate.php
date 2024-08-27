@@ -27,7 +27,7 @@
 
 
 
-    /* body {
+    body {
       font-family: Arial, sans-serif;
     }
 
@@ -48,7 +48,7 @@
 
     .day {
       border: 1px solid #ccc;
-      padding: 10px;
+      /* padding: 10px; */
       text-align: center;
       cursor: pointer;
       position: relative;
@@ -85,7 +85,7 @@
     .nav-button:disabled {
       background-color: #ddd;
       cursor: not-allowed;
-    } */
+    }
   </style>
 </head>
 
@@ -129,46 +129,52 @@
         ?>
 
 
-        <div class="row">
-          <div class="col-md-3"></div>
+        <div class="row justify-content-center">
+          <!-- <div class="col-md-3"></div> -->
 
-          <div class="col-md-6 mt-5 mb-5">
-            <form method="post" action="">
+          <div class="col-md-8 mt-5 mb-5">
 
-              <!-- <div class="calendar-container">
-                <div class="navigation">
-                  <button id="prev-month" class="nav-button">&lt; Previous</button>
-                  <span id="month-year"></span>
-                  <button id="next-month" class="nav-button">Next &gt;</button>
+
+            <div class="container">
+              <div class="row">
+                <div class="calendar-container">
+                  <div class="navigation">
+                    <button id="prev-month" class="nav-button">&lt; Previous</button>
+                    <span id="month-year"></span>
+                    <button id="next-month" class="nav-button">Next &gt;</button>
+                  </div>
+                  <div id="calendar" class="calendar"></div>
+                  <p id="available-seats">Available seats: </p>
+                  <form method="post" action="">
+                    <input type="hidden" id="selected-date" name="selected-date" placeholder="Selected Date">
+                    <button class="btn btn-primary" name="submit">get payment</button>
+                  </form>
                 </div>
-                <div id="calendar" class="calendar"></div>
-                <p id="available-seats">Available seats: </p>
-                <input type="text" id="selected-date" placeholder="Selected Date" readonly>
-              </div> -->
+              </div>
+            </div>
 
 
 
-
-
-              <label for="date-picker">Select a Date:</label>
+            <!-- <label for="date-picker">Select a Date:</label>
               <input type="date" id="date-picker" name="date-picker" min="">
-              <p id="available-seats"></p>
+              <p id="available-seats"></p> -->
+            <!-- <form method="post" action="">
               <center>
-                <input type="hidden" id="selected-date" name="selected-date"><br>
+                <input type="text" id="selected-date" name="selected-date"><br>
                 <button class="btn btn-primary" name="submit">get payment</button>
               </center>
-            </form>
+            </form> -->
           </div>
 
         </div>
-
-
 
       </div>
     </div>
   </div>
 
 </body>
+
+</html>
 
 <!-- <script>
   // Get today's date
@@ -194,7 +200,7 @@
   });
 </script> -->
 
-<script>
+<!-- <script>
   // Initialize today's date and the next five days for the date picker
   var today = new Date();
   var day = String(today.getDate()).padStart(2, '0');
@@ -256,11 +262,11 @@
     var selectedDate = this.value;
     updateAvailableSeats(selectedDate);
   });
-</script>
+</script> -->
 
 
 
-<!-- <script>
+<script>
   var today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -334,4 +340,4 @@
   });
 
   generateCalendar();
-</script> -->
+</script>

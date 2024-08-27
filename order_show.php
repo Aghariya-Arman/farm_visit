@@ -29,9 +29,6 @@
 
 
   ?>
-
-
-
   <div class="container">
     <div class="box justify-content-center row  mt-5">
       <div class="col-lg-6 border border-dark p-3">
@@ -49,19 +46,19 @@
           <h5>INFANTS :- <?php echo $row['infants']; ?></h5>
         </div>
         <div class="field border-bottom">
-          <h4>STAY :- <?php echo $row['stays']; ?></h4>
+          <h5>STAY :- <?php echo $row['stays']; ?></h5>
         </div>
         <div class="field border-bottom">
-          <h4>TENT :- <?php echo $row['tent']; ?></h4>
+          <h5>TENT :- <?php echo $row['tent']; ?></h5>
         </div>
         <div class="field border-bottom">
-          <h4>ORDER_DATE :- <?php echo $row['order_date']; ?></h4>
+          <h5>ORDER_DATE :- <?php echo $row['order_date']; ?></h5>
         </div>
         <div class="field border-bottom">
-          <h4>WALLET :- <?php echo $row['wallet']; ?></h4>
+          <h5>WALLET :- <?php echo $row['wallet']; ?></h4>
         </div>
         <div class="field text-center mt-3">
-          <button class="btn btn-primary"><a href="index.html" style="color: white;">Back To Home</a></button>
+          <a href="index.html"> <button class="btn btn-primary">Back To Home</button></a>
         </div>
       </div>
     </div>

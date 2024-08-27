@@ -69,9 +69,9 @@
               <option value="banglorer">Banglore</option>
               <option value="chennai">Chennai</option>
               <option value="kolkata">Kolkata</option>
-              <option value="kolkata">Tiptur</option>
-              <option value="kolkata">Hydrabad</option>
-              <option value="kolkata">Keral</option>
+              <option value="Tiptur">Tiptur</option>
+              <option value="Hydrabad">Hydrabad</option>
+              <option value="Keral">Keral</option>
             </select>
           </div>
           <div>

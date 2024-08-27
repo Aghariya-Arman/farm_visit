@@ -39,9 +39,8 @@
   include 'connection.php';
 
   if (isset($_POST['submit'])) {
-    // print_r($_POST['nstay']);
+    // print_r($_POST['tentDisplay']);
     // exit;
-    // Debugging output (remove these in production)
     $city = $_POST['allcity'];
     if ($city == 'bangalore') {
       $stay = $_POST['modeText1'];
@@ -49,7 +48,7 @@
     $adult = $_POST['counterValue'];
     $kids = $_POST['counterValue1'];
     $infant = $_POST['counterValue2'];
-    $tent = $_POST['nstay'];
+    $tent = $_POST['tentDisplay'];
 
 
     $sql = "insert into customer_order (city,adult,kids,infants,stays,tent) values ('$city','$adult',' $kids','$infant','$stay','$tent')";
@@ -175,10 +174,11 @@
 
       <div class="row mb-4" id="tent4">
         <div class="col-md-3"></div>
-        <div class="col-md-4 border border-dark">
-          <label for="">TENT AVAILABLE</label>
-          <input type="radio" name="nstay" id="nstay" value="tent" />
-          <!-- <input type="text" id="tents" name="tents"> -->
+        <div class="col-md-4">
+          <!-- <label for="">TENT AVAILABLE</label> -->
+          <!-- <input type="radio" name="nstay" id="nstay" value="tent" /><br> -->
+          <input type="text" id="tentDisplay" name="tentDisplay">
+          <!-- <div id="tentDisplay"></div> -->
         </div>
       </div>
 
@@ -211,6 +211,7 @@
     const modeText = document.getElementById('modeText');
     const modeText1 = document.getElementById('modeText1');
     const maxCount = 10;
+    // let fvalue = 0;
 
     function change_day() {
       if (modeText.textContent === 'day') {
@@ -238,9 +239,11 @@
         value++;
         counterValue.value = value;
         counter.textContent = value;
-
         adult = value * 500;
         final_count(adult, kids);
+
+        // fvalue = value;
+
       }
     }
 
@@ -254,6 +257,9 @@
         counter.textContent = value;
         adult = value * 500;
         final_count(adult, kids);
+
+        // fvalue = value;
+
       }
     }
 
@@ -268,6 +274,9 @@
         counter1.textContent = value;
         kids = value * 250;
         final_count(adult, kids);
+
+        // fvalue = value;
+
       }
     }
 
@@ -293,6 +302,8 @@
         value++;
         counterValue2.value = value;
         counter2.textContent = value;
+
+        // fvalue = value;
       }
     }
 
@@ -304,6 +315,8 @@
         value--;
         counterValue2.value = value;
         counter2.textContent = value;
+
+        // fvalue = value;
       }
     }
 
@@ -335,7 +348,7 @@
 
     function showtent_day() {
       let p = document.getElementById("tent4");
-      p.style.display = "none";
+      // p.style.display = "none";
       if (p.style.display == "none") {
         p.style.display = "none";
       } else {
@@ -350,14 +363,15 @@
       } else {
         p.style.display = "block";
       }
+
+      const totalpeople = (adult / 500) + (kids / 250);
+      updateTentDisplay(totalpeople);
     }
 
 
     // slect city
     function handleClick(city) {
-
       document.getElementById("allcity").value = city;
-
     }
 
 
@@ -366,11 +380,18 @@
     let final_total = 0;
 
     function final_count(adult, kids) {
-
       final_total = adult + kids;
-
-      console.log(final_total);
+      // console.log(final_total);
       document.getElementById("total").innerHTML = final_total;
+
+    }
+
+    //show tent value
+    function updateTentDisplay(totalPeople) {
+      let tentsRequired = 1;
+      tentsRequired = Math.ceil(totalPeople / 3);
+      document.getElementById('tentDisplay').value = tentsRequired + "->Tent";
+
     }
   </script>
 </body>
