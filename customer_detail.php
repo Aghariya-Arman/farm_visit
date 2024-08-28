@@ -56,7 +56,7 @@
 
 
         <div class="field text-center mt-3">
-          <button class="btn btn-primary"><a href="order.php" style="color: white;">PLACE YOUR ORDER</a></button>
+          <a href="order.php"> <button class="btn btn-primary">PLACE YOUR ORDER</button></a>
         </div>
       </div>
     </div>

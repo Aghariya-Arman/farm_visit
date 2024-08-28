@@ -211,7 +211,9 @@
     const modeText = document.getElementById('modeText');
     const modeText1 = document.getElementById('modeText1');
     const maxCount = 10;
-    // let fvalue = 0;
+    let tent = document.getElementById("tent4");
+    tent.style.display = "block";
+
 
     function change_day() {
       if (modeText.textContent === 'day') {
@@ -219,11 +221,14 @@
         nightButton.classList.add('active');
         modeText.textContent = 'night';
         modeText1.value = 'night';
+
+
       } else {
         nightButton.classList.remove('active');
         dayButton.classList.add('active');
         modeText.textContent = 'day';
         modeText1.value = 'day';
+
       }
     }
 
@@ -242,8 +247,16 @@
         adult = value * 500;
         final_count(adult, kids);
 
-        // fvalue = value;
+        //real time tent show
+        let p = document.getElementById("tent4");
+        if (p.style.display == "none") {
+          p.style.display = "none";
+        } else {
+          p.style.display = "block";
+          showtent_night();
 
+        }
+        // fvalue = value;
       }
     }
 
@@ -258,8 +271,16 @@
         adult = value * 500;
         final_count(adult, kids);
 
-        // fvalue = value;
+        //count for tent real time
+        let p = document.getElementById("tent4");
+        if (p.style.display == "none") {
+          p.style.display = "none";
+        } else {
+          p.style.display = "block";
+          showtent_night();
 
+        }
+        // updateTentIfNeeded();
       }
     }
 
@@ -275,6 +296,14 @@
         kids = value * 250;
         final_count(adult, kids);
 
+        //count for tent real time
+        let p = document.getElementById("tent4");
+        if (p.style.display == "none") {
+          p.style.display = "none";
+        } else {
+          p.style.display = "block";
+          showtent_night();
+        }
         // fvalue = value;
 
       }
@@ -290,6 +319,14 @@
         counter1.textContent = value;
         kids = value * 250;
         final_count(adult, kids);
+        //count for tent real time
+        let p = document.getElementById("tent4");
+        if (p.style.display == "none") {
+          p.style.display = "none";
+        } else {
+          p.style.display = "block";
+          showtent_night();
+        }
       }
     }
 
@@ -302,7 +339,6 @@
         value++;
         counterValue2.value = value;
         counter2.textContent = value;
-
         // fvalue = value;
       }
     }
@@ -326,8 +362,11 @@
       if (p.style.display == "block") {
         // console.log(p.style.display);
         p.style.display = "block";
+        //tent.style.display = "block";
+
       } else {
         p.style.display = "block";
+        // tent.style.display = "block";
 
       }
     }
@@ -336,36 +375,39 @@
       let p = document.getElementById("info3");
       if (p.style.display == "none") {
         p.style.display = "none";
+        // tent.style.display = "none";
       } else {
         p.style.display = "none";
+        tent.style.display = "none";
       }
     }
 
 
     // tent show 
-    let p = document.getElementById("tent4");
-    p.style.display = "none";
+
+    tent.style.display = "none";
 
     function showtent_day() {
-      let p = document.getElementById("tent4");
+      let tent = document.getElementById("tent4");
       // p.style.display = "none";
-      if (p.style.display == "none") {
-        p.style.display = "none";
+      if (tent.style.display == "none") {
+        tent.style.display = "none";
       } else {
-        p.style.display = "none";
+        tent.style.display = "none";
       }
     }
 
     function showtent_night() {
-      let p = document.getElementById("tent4");
-      if (p.style.display == "block") {
-        p.style.display = "block";
+      let tent = document.getElementById("tent4");
+      if (tent.style.display == "block") {
+        tent.style.display = "block";
       } else {
-        p.style.display = "block";
+        tent.style.display = "block";
       }
 
       const totalpeople = (adult / 500) + (kids / 250);
       updateTentDisplay(totalpeople);
+      // updateTentDisplay();
     }
 
 
@@ -388,11 +430,18 @@
 
     //show tent value
     function updateTentDisplay(totalPeople) {
+      //const totalpeople = (adult / 500) + (kids / 250);
       let tentsRequired = 1;
       tentsRequired = Math.ceil(totalPeople / 3);
       document.getElementById('tentDisplay').value = tentsRequired + "->Tent";
 
     }
+
+    // function updateTentIfNeeded() {
+    //   if (modeText1.value === 'night') {
+    //     updateTentDisplay();
+    //   }
+    // }
   </script>
 </body>
 
