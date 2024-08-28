@@ -407,7 +407,6 @@
 
       const totalpeople = (adult / 500) + (kids / 250);
       updateTentDisplay(totalpeople);
-      // updateTentDisplay();
     }
 
 
