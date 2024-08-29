@@ -102,9 +102,13 @@
 
         $sql = "SELECT order_id,city,adult,kids,infants,stays,tent FROM customer_order ORDER BY order_id  DESC LIMIT 1;";
         $result = mysqli_query($conn, $sql);
+        $adults = 0;
+        $kids = 0;
         if ($result) {
           while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['order_id'];
+            $adults = $row['adult']; // Store number of adults
+            $kids = $row['kids']; // Store number of kids
             echo '
              <span><center>city:' . $row['city'] . '</center></span>
                 <span><center>adult:' . $row['adult'] . '</center></span>
@@ -315,8 +319,13 @@
   }
 
   function selectDate(selectedDate) {
-    if (slotsPerDay[selectedDate] > 0) {
-      slotsPerDay[selectedDate]--;
+
+    var adults = <?php echo $adults; ?>; // Fetch number of adults from PHP
+    var kids = <?php echo $kids; ?>; // Fetch number of kids from PHP
+    var totalPeople = adults + kids; // Calculate total people
+
+    if (slotsPerDay[selectedDate] >= totalPeople) {
+      slotsPerDay[selectedDate] -= totalPeople;
       updateAvailableSeats(selectedDate);
       document.getElementById('selected-date').value = selectedDate;
       generateCalendar();
